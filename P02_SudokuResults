@@ -1,0 +1,38 @@
+using System;
+
+class SudokuResults
+{
+    static void Main()
+    {
+        int count = 0;
+        int timeTotal = 0;
+
+        string line = Console.ReadLine();
+        while(!line.Equals("Quit"))
+        {
+            int minutes = int.Parse(line.Substring(0, 2));
+            int seconds = int.Parse(line.Substring(3, 2));
+
+            int time = minutes * 60 + seconds;
+            count++;
+            timeTotal += time;
+
+            line = Console.ReadLine();
+        }
+
+        if (Math.Ceiling((double)timeTotal / count) < 720)
+        {
+            Console.WriteLine("Gold Star");
+        }
+        else if (Math.Ceiling((double)timeTotal / count) > 1440)
+        {
+            Console.WriteLine("Bronze Star");
+        }
+        else
+        {
+            Console.WriteLine("Silver Star");
+        }
+
+        Console.WriteLine("Games - {0} \\ Average seconds - {1}", count, Math.Ceiling((double)timeTotal / count));
+    }
+}
