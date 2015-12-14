@@ -1,0 +1,35 @@
+using System;
+using System.Text;
+
+class ShuffleBits
+{
+    static void Main()
+    {
+        uint a = uint.Parse(Console.ReadLine());
+        uint b = uint.Parse(Console.ReadLine());
+
+        string aa = Convert.ToString(a, 2).PadLeft(32, '0');
+        string bb = Convert.ToString(b, 2).PadLeft(32, '0');
+
+        StringBuilder result = new StringBuilder();
+
+        if (a >= b)
+        {
+            for (int i = 0; i < 32; i++)
+            {
+                result.Append(aa[i]);
+                result.Append(bb[i]);
+            }
+        }
+        else
+        {
+            for (int i = 0; i < 32; i += 2)
+            {
+                result.Append(aa.Substring(i, 2));
+                result.Append(bb.Substring(i, 2));
+            }
+        }
+
+        Console.WriteLine(Convert.ToUInt64(result.ToString(), 2));
+    }
+}
