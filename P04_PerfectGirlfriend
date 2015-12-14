@@ -1,0 +1,48 @@
+using System;
+
+class PerfectGirlfriend
+{
+    static void Main()
+    {
+        int count = 0;
+        string line = Console.ReadLine();
+        while(!line.Equals("Enough dates!"))
+        {
+            string[] data = line.Split('\\');
+            int result = 0;
+
+            switch (data[0])
+            {
+                case "Monday": result += 1; break;
+                case "Tuesday": result += 2; break;
+                case "Wednesday": result += 3; break;
+                case "Thursday": result += 4; break;
+                case "Friday": result += 5; break;
+                case "Saturday": result += 6; break;
+                case "Sunday": result += 7; break;
+            }
+
+            for (int i = 0; i < data[1].Length; i++)
+            {
+                //result += int.Parse(data[1].Substring(i, 1));
+                result += int.Parse(data[1][i].ToString());
+            }
+
+            result += int.Parse(data[2].Substring(0, data[2].Length - 1)) * (int)data[2][data[2].Length - 1];
+            result -= (int)data[3][0] * data[3].Length;
+
+            if (result >= 6000)
+            {
+                count ++;
+                Console.WriteLine("{0} is perfect for you.", data[3]);
+            }
+            else
+            {
+                Console.WriteLine("Keep searching, {0} is not for you.", data[3]);
+            }
+
+            line = Console.ReadLine();
+        }
+        Console.WriteLine(count);
+    }
+}
