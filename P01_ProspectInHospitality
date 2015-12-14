@@ -1,0 +1,30 @@
+using System;
+
+class ProspectInHospitality
+{
+    static void Main()
+    {
+        uint b = uint.Parse(Console.ReadLine());
+        uint r = uint.Parse(Console.ReadLine());
+        uint c = uint.Parse(Console.ReadLine());
+        uint t = uint.Parse(Console.ReadLine());
+        uint o = uint.Parse(Console.ReadLine());
+        decimal n = decimal.Parse(Console.ReadLine());
+        decimal u = decimal.Parse(Console.ReadLine());
+        decimal s = decimal.Parse(Console.ReadLine());
+        decimal budget = decimal.Parse(Console.ReadLine());
+
+        decimal total = b * 1500.04m + r * 2102.10m + c * 1465.46m + t * 2053.33m + o * 3010.98m + n * u + s;
+
+        Console.WriteLine("The amount is: {0:0.00} lv.", total);
+
+        if (budget >= total)
+        {
+            Console.WriteLine("YES \\ Left: {0:0.00} lv.", budget - total);
+        }
+        else
+        {
+            Console.WriteLine("NO \\ Need more: {0:0.00} lv.", total - budget);
+        }
+    }
+}
