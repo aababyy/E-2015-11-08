@@ -1,0 +1,61 @@
+using System;
+using System.Text;
+
+class ShuffleBits
+{
+    static void Main()
+    {
+        uint firstNumber = uint.Parse(Console.ReadLine());
+        uint secondNumber = uint.Parse(Console.ReadLine());
+
+        string first = Convert.ToString(firstNumber, 2).PadLeft(32, '0');
+        string second = Convert.ToString(secondNumber, 2).PadLeft(32, '0');
+
+        StringBuilder result = new StringBuilder();
+        //string resultSTR = string.Empty;
+
+        if (firstNumber >= secondNumber)
+        {
+            for (int i = 0; i < first.Length; i++)
+            {
+                result.Append(first[i]);
+                result.Append(second[i]);
+
+                //resultSTR = resultSTR + first[i];
+                //resultSTR = resultSTR + second[i];
+            }
+        }
+        else
+        {
+            for (int i = 0; i < first.Length; i += 2)
+            {
+                result.Append(first[i]);
+                result.Append(first[i + 1]);
+                result.Append(second[i]);
+                result.Append(second[i + 1]);
+
+                //result.Append(first.Substring(i, 2));
+                //result.Append(second.Substring(i, 2));
+
+                /*
+                resultSTR = resultSTR + first[i];
+                resultSTR = resultSTR + first[i + 1];
+                resultSTR = resultSTR + second[i];
+                resultSTR = resultSTR + second[i + 1];
+                */
+
+                //resultSTR = resultSTR + first.Substring(i, 2);
+                //resultSTR = resultSTR + second.Substring(i, 2);
+            }
+        }
+
+        string res = result.ToString();
+
+        ulong output = Convert.ToUInt64(res, 2);
+
+        //ulong outputSTR = Convert.ToUInt64(resultSTR, 2);
+
+        Console.WriteLine(output);
+        //Console.WriteLine(outputSTR);
+    }
+}
